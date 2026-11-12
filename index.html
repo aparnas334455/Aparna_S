@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="color-scheme" content="dark" />
+    <script>
+      try {
+        var bioThemes = ['agar', 'bioluminescent', 'gram-stain', 'fluorescence'];
+        var lastIdx = parseInt(localStorage.getItem('bio-theme-idx') ?? '-1', 10);
+        var nextIdx = Number.isNaN(lastIdx) ? 0 : (lastIdx + 1) % bioThemes.length;
+        localStorage.setItem('bio-theme-idx', String(nextIdx));
+        if (bioThemes[nextIdx] !== 'agar') {
+          document.documentElement.dataset.bioTheme = bioThemes[nextIdx];
+        }
+      } catch {
+        var fallbackThemes = ['agar', 'bioluminescent', 'gram-stain', 'fluorescence'];
+        var pick = fallbackThemes[Math.floor(Math.random() * fallbackThemes.length)];
+        if (pick !== 'agar') document.documentElement.dataset.bioTheme = pick;
+      }
+    </script>
+    <title>Aparna S | Microbiologist</title>
+    <meta
+      name="description"
+      content="Portfolio of Aparna S, M.Sc. Microbiology — molecular biology, mutagenesis, medical microbiology."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
